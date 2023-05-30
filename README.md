@@ -73,7 +73,7 @@ DeepEye version : 0.0.1
 - ✅ add option to choose output : full line of match OR match with N chars range around it (`flag:--range`)
 - ⏳ add option to limit number of lines to output.
 - ⏳ make the auto update functionality
-- ⏳ write installer script
+- ✅ write installer script (need improvements)
 - ⏳ add queries history option (pick already used queries)
 
 ✅ = Ready to use
@@ -105,7 +105,7 @@ wget -qO- https://github.com/aallali/DeepEye/raw/main/install.sh | sudo bash
 ```
 or clone the clone and compile it yourself.
 ## Releases:
-- 30/05/2023 : **0.0.1**
+- 30/05/2023 : **[0.0.1]**
 
 
 ## Maintainers:
@@ -117,3 +117,6 @@ or clone the clone and compile it yourself.
 
 ## Licence:
 MIT License
+
+
+[0.0.1]:(https://github.com/aallali/DeepEye/releases/tag/v0.0.1)
