@@ -25,7 +25,7 @@ Birth: 24/05/2023
 First release: 30/05/2023
 
 Usage:
-  deepeye <filename> flags [flags]
+  deepeye <filename> [flags]
 
 Flags:
   -h, --help             help for deepeye
