@@ -9,70 +9,70 @@ import (
 
 	. "github.com/aallali/deepeye/src/config"
 	"github.com/dlclark/regexp2"
-	"github.com/fatih/color"
 )
 
-func regexp2FindAllString(re *regexp2.Regexp, s string) []string {
-	var matches []string
-	m, _ := re.FindStringMatch(s)
-	for m != nil {
-		matches = append(matches, m.String())
-		m, _ = re.FindNextMatch(m)
-	}
-	return matches
-}
-
+// @params query Query: a type Query variable containing the options of our search query
+// @return void
 func DeepEye(query Query) {
-	starTime := time.Now()
 
-	f, err := os.Open(query.FilePath)
-	// time.Sleep(1 * time.Second)
-	if err != nil {
+	var line int = 0           // to keep track of lines scanned
+	var totalMatchs int = 0    // to count number of matches found
+	var scanner *bufio.Scanner // where the scanner gonna be initiated
+	var startTime time.Time    // to hold the start time value
+	var elapsed time.Duration  // to hold the end time value after finishing the scan
+	var rgx *regexp2.Regexp    // the compiled regex expression from query.Regex
+
+	f, err := os.Open(query.FilePath) // get the file descriptor of path given if found
+
+	if err != nil { // if there is an error while opening the file, print it and OUT!
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	defer f.Close()
-
-	scanner := bufio.NewScanner(f)
-	line := 0
-	totalMatchs := 0
-	info := color.New(color.FgBlack, color.BgYellow).SprintFunc()
-
+	defer f.Close() // close the file descriptor when finish the DeepEye() function
 	// https://golang.org/pkg/bufio/#Scanner.Scan
-	r, rerr := regexp2.Compile(query.Regex, 0)
+	scanner = bufio.NewScanner(f)
 
-	if rerr != nil {
-		println(rerr.Error())
+	rgx, rgxErr := regexp2.Compile(query.Regex, 0)
+
+	if rgxErr != nil {
+		fmt.Println(rgxErr)
 		os.Exit(1)
 	}
+	// snapshot the current time
+	startTime = time.Now()
 
-	for scanner.Scan() {
+	for scanner.Scan() { // Scan advances the Scanner to the next toke
 
-		var lineStr string = scanner.Text()
+		var lineStr string = scanner.Text() // ge the String value of current line
 
+		// if query.Regex is present, then run search through regex search
 		if query.Regex != "" {
-			rgxMatchResult := regexp2FindAllString(r, lineStr)
+			// run the match with regex expression then remove duplication
+			rgxMatchResult := removeDuplicates(regexp2FindAllString(rgx, lineStr))
+
+			// if Silent is false then run the margin generator
 			if !query.Silent {
-				for _, singleMatch := range rgxMatchResult {
-					if singleMatch != "" {
-						totalMatchs++
-						results := SubSWithRange(lineStr, singleMatch, 10)
-						for _, el := range results {
-							if isMatch, _ := r.MatchString(el); isMatch {
-								rgxRepl, _ := r.Replace(el, info(singleMatch), 10, -1)
-								fmt.Printf("[L:%d]: [%s]\n", line, rgxRepl)
-							}
-						}
-					}
+				results := SpotAndMargin(lineStr, rgxMatchResult, query.Range)
+
+				// loop through all formed strings from SpotAndMargin and print them with followng template
+				for _, el := range results {
+					fmt.Printf("{l:%d}: [%s]\n", line, el)
+					totalMatchs++
 				}
 			} else {
+				// if Silent i true, then increment the number of matched keywords
 				totalMatchs += len(rgxMatchResult)
 			}
+
+			// otherwise get the query.Keyword value
 		} else {
+
+			// if Silent false, search for the query.Keyword with SpotAndMargin
 			if !query.Silent {
-				results := SubSWithRange(lineStr, query.Keyword, 30)
-				for _, r := range results {
-					fmt.Printf("[L:%d]: [%s]\n", line, strings.Replace(r, query.Keyword, info(query.Keyword), -1))
+				results := SpotAndMargin(lineStr, []string{query.Keyword}, query.Range)
+				// loop through the results, format them, and increat match counter.
+				for _, el := range results {
+					fmt.Printf("{l:%d}: [%s]\n", line, el)
 					totalMatchs++
 				}
 			} else {
@@ -80,21 +80,21 @@ func DeepEye(query Query) {
 			}
 		}
 		line++
+
 	}
-	elapsed := time.Since(starTime)
+
+	// calculate the time duration from line 42
+	elapsed = time.Since(startTime)
 
 	if err := scanner.Err(); err != nil {
 		fmt.Println(err)
 	}
+
 	fmt.Println("-------------------------------")
 	fmt.Printf("Target file path    : %s\n", query.FilePath)
-	fmt.Printf("Search query        : `%s`\n", ilc(query.Keyword == "", query.Regex, query.Keyword))
+	fmt.Printf("Search query        : `%s`\n", ifElse(query.Keyword == "", query.Regex, query.Keyword))
 	fmt.Printf("Total matches found : %d\n", totalMatchs)
 	fmt.Printf("Total lines scanned : %d\n", line)
-	if elapsed.Milliseconds() >= 1000 {
-		fmt.Printf("%s took 	    : %.3f s\n", "File Scan", elapsed.Seconds())
-	} else {
-		fmt.Printf("%s took 	    : %d ms\n", "File Scan", elapsed.Milliseconds())
-	}
+	fmt.Printf("File Scan took 	    : %s\n", elapsed.String())
 
 }

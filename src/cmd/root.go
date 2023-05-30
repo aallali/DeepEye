@@ -12,6 +12,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// define our Query placeholder
 var query Query
 
 // rootCmd represents the base command when called without any subcommands
@@ -27,14 +28,15 @@ var rootCmd = &cobra.Command{
 			return nil
 		}
 		if len(args) == 1 {
-			if query.Regex == "" && query.Keyword == "" {
+			if (query.Regex == "" && query.Keyword == "") || query.Range < -1 {
 				cmd.Usage()
 				os.Exit(1)
 			}
 			return nil
 		}
-		return cmd.Usage()
-
+		cmd.Usage()
+		os.Exit(1)
+		return nil
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 		if query.Update || query.Version {
@@ -72,9 +74,10 @@ func init() {
 	// will be global for your application.
 	rootCmd.Flags().StringVarP(&query.Regex, "regex", "r", "", "regex expression to match in file.")
 	rootCmd.Flags().StringVarP(&query.Keyword, "keyword", "k", "", "Keyword to match in file.")
+	rootCmd.Flags().IntVarP(&query.Range, "range", "", 0, "the range of characters around the match to print. default:0")
 
-	rootCmd.Flags().BoolVarP(&query.Silent, "silent", "s", false, "if you want to silent the comand, only resume will be printed.")
-	rootCmd.Flags().BoolVarP(&query.Update, "update", "u", false, "check for updates.")
-	rootCmd.Flags().BoolVarP(&query.Version, "version", "v", false, "output the current installed version of DeepEye CLI.")
+	rootCmd.Flags().BoolVarP(&query.Silent, "silent", "s", false, "if you want to silent the comand, only resume will be printed. default:false")
+	rootCmd.Flags().BoolVarP(&query.Update, "update", "u", false, "check for updates. default:false")
+	rootCmd.Flags().BoolVarP(&query.Version, "version", "v", false, "output the current installed version of DeepEye CLI. default:false")
 
 }
