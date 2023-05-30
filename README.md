@@ -113,7 +113,7 @@ wget -qO- https://github.com/aallali/DeepEye/raw/main/install.sh | sudo bash
 ```
 or clone the clone and compile it yourself.
 ## Releases:
-- 30/05/2023 : **[0.0.1]**
+- 30/05/2023 : [**[0.0.1]**]
 
 
 ## Maintainers:
