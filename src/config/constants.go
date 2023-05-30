@@ -13,7 +13,7 @@ var Infos = struct {
 	Version:   "0.0.1",
 	GitRep:    "https://github.com/aallali/deepeye/",
 	Short:     "CLI for fast/efficient searching queries through files.",
-	Usage:     "deepeye <filename> flags",
+	Usage:     "deepeye <filename>",
 	VCheckUrl: "https://github.com/aallali/deepeye/raw/main/version.txt",
 }
 
