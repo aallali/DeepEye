@@ -6,22 +6,23 @@
 
 ## Description:
 **DeepEye** a CLI  that simply help you make search queries through files quickly using plain text or regex expressions, while having detailed output about it.
-The project meant to be simple and HELPFUL/
-Suggestions and helps are welcome :) 
+The project meant to be simple and HELPFUL
+
+**If you visited this page, leave a ⭐️ on this repo so i can see you, means a lot :)**
+Suggestions and helps are welcome.
 ## Usage:
 ```
-~/Desktop
 ➜ deepeye -h
-
 DeepEye: a CLI that will allow you to run advanced search queries
-	through multile text files, while having customized + detailed output.
+	through multipe text files, while having customized + detailed output.
 	The "deepeye" program was mainly focused on helping terminal users,
 	to quickly search in files in both plain text and regex queries.
 
-Willing to contribute ? : "https://github.com/aallali/deepeye"
+Willing to contribute? : "https://github.com/aallali/deepeye/"
 
 Author: Abdellah Allali <hi@allali.me>
 Birth: 24/05/2023
+First release: 30/05/2023
 
 Usage:
   deepeye <filename> flags [flags]
@@ -29,14 +30,21 @@ Usage:
 Flags:
   -h, --help             help for deepeye
   -k, --keyword string   Keyword to match in file.
+      --range int        the range of characters around the match to print. default:0
   -r, --regex string     regex expression to match in file.
-  -s, --silent           if you want to silent the comand, only resume will be printed.
-  -u, --update           check for updates.
-  -v, --version          output the current installed version of DeepEye CLI.
+  -s, --silent           if you want to silent the comand, only resume will be printed. default:false
+  -u, --update           check for updates. default:false
+  -v, --version          output the current installed version of DeepEye CLI. default:false
 
-~/Desktop
+```
+```
 ➜ deepeye -v
-DeepEye version : 0.0.1
+DeepEye v0.0.1
+```
+```
+➜ deepeye -u
+Checking ...
+You are running the latest version of DeepEye: 0.0.1
 ```
 ## Examples:
 <!-- EXMP0 -->
@@ -88,13 +96,13 @@ DeepEye version : 0.0.1
 | flag/args | default | accepted values | description
 | --- | --- | --- | --- |
 | path/to/file | required as first argument | valid file path | path the file to search in |
-| `-k` `--keyword` | required (`if -r not present`) | string | if you want to search with a static keyword, e.g: `-k=";1337;"` |
-| `-r` `--regex` | required (`if -k not present`) | regex expression| if you want to search with a regex expression , e.g: `-r="(?<=;)[0-9]+(?=;)"` |
-| `-s` `--silent` | `false` | boolean | if you want to print the statistics of result only, without matched lines |
-| `--range` | `0` | number (`positive or -1`)| the range of characters desired to print around the match (margin), <br>`0`: print only the matched string <br> `x`: print x characters on the left and right of matched string<br>`-1`: print full line |
-| `-h` `--help` | false | boolean | print the help guide to use the command|
-| `-v` `--version` | false | boolean | print installed version of DeepEye |
-| `-u` `--update` | false | boolean | check for any available updates |
+| `-k`<br>`--keyword` | required<br>(`if -r not present`) | string | if you want to search with a static keyword,<br>e.g: `-k=";1337;"` |
+| `-r`<br>`--regex` | required<br>(`if -k not present`) | regex expression| if you want to search with a regex expression ,<br>e.g: `-r="(?<=;)[0-9]+(?=;)"` |
+| `-s`<br>`--silent` | `false` | boolean | if you want to print the statistics of result only, without matched lines |
+| `--range` | `0` | number<br>(`positive or -1`)| the range of characters desired to print around the match (margin), <br>`0`: print only the matched string <br> `x`: print x characters on the left and right of matched string<br>`-1`: print full line |
+| `-h`<br>`--help` | false | boolean | print the help guide to use the command|
+| `-v`<br>`--version` | false | boolean | print installed version of DeepEye |
+| `-u`<br>`--update` | false | boolean | check for any available updates |
 
 
 ## installation:
