@@ -8,7 +8,7 @@
 **DeepEye** a CLI  that simply help you make search queries through files quickly using plain text or regex expressions, while having detailed output about it.
 The project meant to be simple and HELPFUL
 
-**If you visited this page, leave a ⭐️ on this repo so i can see you, means a lot :)**
+**If you visited this page, will be nice if you leave a ⭐️ on this repo so i can see you, means a lot :)**
 Suggestions and helps are welcome.
 ## Usage:
 ```
