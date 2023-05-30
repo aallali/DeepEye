@@ -5,10 +5,15 @@ All notable changes to this project will be documented in this file.
  
 ## \[[0.0.1]] - 2023-05-30
   
-Here we would have the update steps for 0.0.1 for people to follow.
+First release of DeepEye <3:
  
 ### Added
-- N/A
+options available :
+- keyword
+- regex
+- margin/full line : --range
+- silent output
+- auto update checker -u
 ### Changed
 - N/A
 ### Fixed
@@ -16,4 +21,4 @@ Here we would have the update steps for 0.0.1 for people to follow.
 
 <!-- Links -->
 
-[0.0.1]:(./url1)
+[0.0.1]:(https://github.com/aallali/DeepEye/releases/tag/v0.0.1)
