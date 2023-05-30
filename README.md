@@ -108,12 +108,12 @@ You are running the latest version of DeepEye: 0.0.1
 ## installation:
 
 - run the command : 
-```
-wget -qO- https://github.com/aallali/DeepEye/raw/main/install.sh | sudo bash
-```
-or clone the clone and compile it yourself.
+  ```
+  wget -qO- https://github.com/aallali/DeepEye/raw/main/install.sh | sudo bash
+  ```
+  or clone the clone and compile it yourself.
 ## Releases:
-- 30/05/2023 : [**[0.0.1]**]
+- 30-05-2023 : **[[0.0.1]((https://github.com/aallali/DeepEye/releases/tag/v0.0.1))]**
 
 
 ## Maintainers:
@@ -125,6 +125,3 @@ or clone the clone and compile it yourself.
 
 ## Licence:
 MIT License
-
-
-[0.0.1]:(https://github.com/aallali/DeepEye/releases/tag/v0.0.1)
