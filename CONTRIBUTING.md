@@ -27,7 +27,7 @@ If you have questions regarding DeepEye, feel free to send me : hi+deepeye@allal
 
 ## Submitting changes
 
-
+(currently there is no tests written so far, since i just tried to realise the idea i had in mind quickly, i am still working on them, but if you like to add something new to the app, please write some unit tests that cover its use case + the bugs that it fixes. THANKS!)
 1. Tests: If you are submitting code, please ensure you have adequate tests
    for the feature. Tests can be run via `go test ./...` or `make test`.
 1. Since this is golang project, ensure the new code is properly formatted to
