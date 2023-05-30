@@ -52,26 +52,41 @@ You are running the latest version of DeepEye: 0.0.1
 <img src="./Ressources/products-sample.png" width="600">
 <!-- EXMP1 -->
 - search for all EAN numbers in the csv file which is 12-13 number (universal format) 
+
 **`deepeye ./products_sample.csv -r="[0-9]{12,13}"`**
+
 (all the found 14815 are printed to console here, just cut last part here)
 (the prefix `{L:14...}` tell the line number where the match has been found in file)
+
 <img src="./Ressources/rgx-ean.png" width="400">
+
 <!-- EXMP2 -->
 - same previous query but print 10 characters around the match (margin 10 characters) using **--range** flag
+
 **`deepeye ./products_sample.csv -r="[0-9]{12,13}" --range=10`**
+
 <img src="./Ressources/rgx-ean-range-10.png" width="400">
+
 <!-- EXMP3 -->
 - same previous query but print full line of match using **--range=-1** flag
+
 **`deepeye ./products_sample.csv -r="[0-9]{12,13}" --range=-1`**
+
 <img src="./Ressources/rgx-ean-output-full-line.png" width="700">
+
 <!-- EXMP4 -->
 - same previous query but without printing the matched results using the silent flag **`-s`**
+
 **`deepeye ./products_sample.csv -r="[0-9]{12,13}" -s`**
 (only stats are printed)
+
 <img src="./Ressources/rgx-ean-silent.png" width="400">
 <!-- EXMP5 -->
+
 - search for this random ean and print the full line, as it shows here, this product exists in row number : 14808
+
 **`deepeye ./products_sample.csv -k="book" --range=-1`**
+
 <img src="./Ressources/key-ean-full-line.png" width="700">
 
 
