@@ -53,6 +53,10 @@ func ifElse(cond bool, vTrue interface{}, vFalse interface{}) interface{} {
 // @params s []string: array of strings
 // @return []string : remove duplicated values from arg 's'and retun new array
 func removeDuplicates(s []string) []string {
+
+	if len(s) == 0 {
+		return []string{}
+	}
 	bucket := make(map[string]bool)
 	var result []string
 	for _, str := range s {
