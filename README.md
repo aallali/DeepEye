@@ -137,8 +137,8 @@ You are running the latest version of DeepEye: 0.0.2
   ```
   or clone the clone and compile it yourself.
 ## Releases:
-- 04-06-2023 : **[[0.0.2]((https://github.com/aallali/DeepEye/releases/tag/v0.0.2))]** 📦
-- 30-05-2023 : **[[0.0.1]((https://github.com/aallali/DeepEye/releases/tag/v0.0.1))]** 📦
+- 04-06-2023 : **\[[0.0.2](https://github.com/aallali/DeepEye/releases/tag/v0.0.2)]** 📦
+- 30-05-2023 : **\[[0.0.1](https://github.com/aallali/DeepEye/releases/tag/v0.0.1)]** 📦
 
 
 ## Maintainers:
