@@ -12,7 +12,7 @@ import (
 )
 
 // @params query Query: a type Query variable containing the options of our search query
-// @return void
+// @return void : output the matches depends on the options given + results stats in the end
 func DeepEye(query Query) {
 
 	var line int = 0           // to keep track of lines scanned
@@ -102,8 +102,10 @@ func DeepEye(query Query) {
 	// calculate the time duration from line 42
 	elapsed = time.Since(startTime)
 
+	// check for any error during file scanning
 	if err := scanner.Err(); err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Println("-------------------------------")
@@ -112,5 +114,5 @@ func DeepEye(query Query) {
 	fmt.Printf("Total matches found : %d\n", totalMatchs)
 	fmt.Printf("Total lines scanned : %d\n", line)
 	fmt.Printf("File Scan took 	    : %s\n", elapsed.String())
-
+	return
 }
