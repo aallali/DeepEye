@@ -1,5 +1,5 @@
 BINARY_NAME=deepeye
-BINARY_VERSION=v0.0.1
+BINARY_VERSION=v0.0.2
 BIN_FOLDER=bin
 SRC_FOLDER=src
 BINARY_FULLNAME=${BINARY_NAME}-${BINARY_VERSION}
@@ -21,6 +21,12 @@ run: build
 
 install: build
 	@sudo rm -rf /usr/local/bin/${BINARY_NAME} && sudo cp ./${BIN_FOLDER}/${BINARY_FULLNAME} /usr/local/bin/${BINARY_NAME}
+
+test:
+	go test ./src/...
+
+coverage:
+	go test -coverpkg=./... ./...
 
 clean:
 	@go clean
