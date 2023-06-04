@@ -10,7 +10,7 @@ var Infos = struct {
 	Usage       string
 	VCheckUrl   string
 }{
-	Version:   "0.0.1",
+	Version:   "0.0.2",
 	GitRep:    "https://github.com/aallali/deepeye/",
 	Short:     "CLI for fast/efficient searching queries through files.",
 	Usage:     "deepeye <filename>",

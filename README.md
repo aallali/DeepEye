@@ -8,15 +8,17 @@
 **DeepEye** a CLI  that simply help you make search queries through files quickly using plain text or regex expressions, while having detailed output about it.
 The project meant to be simple and HELPFUL
 
-**If you visited this page, will be nice if you leave a ⭐️ on this repo so i can see you, means a lot :)**
+**If you visited this repo., will be nice if you leave a ⭐️ means a lot :)**
+
 Suggestions and helps are welcome.
 ## Usage:
 ```
 ➜ deepeye -h
+
 DeepEye: a CLI that will allow you to run advanced search queries
-	through multipe text files, while having customized + detailed output.
-	The "deepeye" program was mainly focused on helping terminal users,
-	to quickly search in files in both plain text and regex queries.
+        through multipe text files, while having customized + detailed output.
+        The "deepeye" program was mainly focused on helping terminal users, 
+        to quickly search in files in both plain text and regex queries.
 
 Willing to contribute? : "https://github.com/aallali/deepeye/"
 
@@ -28,28 +30,30 @@ Usage:
   deepeye <filename> [flags]
 
 Flags:
+  -c, --clean            choose to clean output in case you want to store in file. default:false
   -h, --help             help for deepeye
   -k, --keyword string   Keyword to match in file.
+  -l, --lines int        limit number of lines to output. (default 10)
       --range int        the range of characters around the match to print. default:0
   -r, --regex string     regex expression to match in file.
   -s, --silent           if you want to silent the comand, only resume will be printed. default:false
   -u, --update           check for updates. default:false
   -v, --version          output the current installed version of DeepEye CLI. default:false
-
 ```
 ```
 ➜ deepeye -v
-DeepEye v0.0.1
+DeepEye v0.0.2
 ```
 ```
 ➜ deepeye -u
 Checking ...
-You are running the latest version of DeepEye: 0.0.1
+You are running the latest version of DeepEye: 0.0.2
 ```
 ## Examples:
 <!-- EXMP0 -->
 - *products_sample.csv* a simple file with dummy data of random products (+14k lines).
 <img src="./Ressources/products-sample.png" width="600">
+
 <!-- EXMP1 -->
 - search for all EAN numbers in the csv file which is 12-13 number (universal format) 
 
@@ -94,17 +98,20 @@ You are running the latest version of DeepEye: 0.0.1
 - ✅ search with text keyword
 - ✅ search with regex expression
 - ✅ add option to choose output : full line of match OR match with N chars range around it (`flag:--range`)
-- ⏳ add option to limit number of lines to output.
+- ✅ add option to limit number of lines to output. ([#8](https://github.com/aallali/DeepEye/issues/8))
 - ⏳ make the auto update functionality
 - ✅ write installer script (need improvements)
 - ⏳ add queries history option (pick already used queries)
+- ✅ add --clean option to clean the output (matched value only) in case want to write them to file directly from terminal `./deepeye ... > output.txt` ([#PR-6](https://github.com/aallali/DeepEye/pull/6))
 
 ✅ = Ready to use
 ⏳ = In progress
 
 ## ToFix:
-- :rotating_light: write unit tests!
-- ⏳ make real fix to use case of `SpotAndMargin(...)` in Regex option to prevent it from running over unmatched regex but same keyword.
+- :rotating_light: write unit tests! (20%)
+- ⏳ make real fix to use case of `SpotAndMargin(...)` in Regex option to prevent it from running over unmatched regex but same keyword. ([issue:5](https://github.com/aallali/DeepEye/issues/5))
+
+- ✅ fix returning all lines when using option --range=-1 ([issue:8](https://github.com/aallali/DeepEye/issues/8))
 
 🚨 = Urgent
 ## Flags:
@@ -115,6 +122,8 @@ You are running the latest version of DeepEye: 0.0.1
 | `-r`<br>`--regex` | required<br>(`if -k not present`) | regex expression| if you want to search with a regex expression ,<br>e.g: `-r="(?<=;)[0-9]+(?=;)"` |
 | `-s`<br>`--silent` | `false` | boolean | if you want to print the statistics of result only, without matched lines |
 | `--range` | `0` | number<br>(`positive or -1`)| the range of characters desired to print around the match (margin), <br>`0`: print only the matched string <br> `x`: print x characters on the left and right of matched string<br>`-1`: print full line |
+| `-l`<br>`--lines` | 10 | number<br>(`positive or -1`) | limit number of lines to output |
+| `-c`<br>`--clean` | false | boolean | choose to clean output in case you want to store in file |
 | `-h`<br>`--help` | false | boolean | print the help guide to use the command|
 | `-v`<br>`--version` | false | boolean | print installed version of DeepEye |
 | `-u`<br>`--update` | false | boolean | check for any available updates |
@@ -128,7 +137,8 @@ You are running the latest version of DeepEye: 0.0.1
   ```
   or clone the clone and compile it yourself.
 ## Releases:
-- 30-05-2023 : **[[0.0.1]((https://github.com/aallali/DeepEye/releases/tag/v0.0.1))]**
+- 04-06-2023 : **[[0.0.2]((https://github.com/aallali/DeepEye/releases/tag/v0.0.2))]** 📦
+- 30-05-2023 : **[[0.0.1]((https://github.com/aallali/DeepEye/releases/tag/v0.0.1))]** 📦
 
 
 ## Maintainers:
@@ -136,7 +146,7 @@ You are running the latest version of DeepEye: 0.0.1
 - [your name here](./CONTRIBUTING.md)
 
 ## Contributors:
-- Be the first :) 
+- :pencil: [Krishna Dutt Panchagnula](https://github.com/krishnaduttPanchagnula)
 
 ## Licence:
 MIT License
