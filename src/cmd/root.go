@@ -74,9 +74,12 @@ func init() {
 	// will be global for your application.
 	rootCmd.Flags().StringVarP(&query.Regex, "regex", "r", "", "regex expression to match in file.")
 	rootCmd.Flags().StringVarP(&query.Keyword, "keyword", "k", "", "Keyword to match in file.")
-	rootCmd.Flags().IntVarP(&query.Range, "range", "", 0, "the range of characters around the match to print. default:0")
 
+	rootCmd.Flags().IntVarP(&query.Range, "range", "", 0x0, "the range of characters around the match to print.")
+	rootCmd.Flags().IntVarP(&query.Lines, "lines", "l", 0xa, "limit number of lines to output.")
+	rootCmd.Flags().BoolVarP(&query.Clean, "clean", "c", false, "choose to clean output in case you want to store in file. default:false")
 	rootCmd.Flags().BoolVarP(&query.Silent, "silent", "s", false, "if you want to silent the comand, only resume will be printed. default:false")
+
 	rootCmd.Flags().BoolVarP(&query.Update, "update", "u", false, "check for updates. default:false")
 	rootCmd.Flags().BoolVarP(&query.Version, "version", "v", false, "output the current installed version of DeepEye CLI. default:false")
 
