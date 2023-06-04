@@ -5,8 +5,9 @@ if [ "$(whoami)" != "root" ]; then
         exit -1
 fi
 
-executableName="deepeye-v0.0.1"
-downloadUrl="https://github.com/aallali/DeepEye/releases/download/v0.0.1/deepeye-v0.0.1.tar.gz"
+executableVersion="v0.0.2"
+executableName="deepeye-${executableVersion}"
+downloadUrl="https://github.com/aallali/DeepEye/releases/download/${executableVersion}/${executableName}.tar.gz"
 # TODO: wget path to executable from github repo
 # ...
 wget -O ${executableName}.tar.gz ${downloadUrl}
@@ -21,7 +22,6 @@ rm -rf /usr/local/bin/deepeye
 mv ${executableName} /usr/local/bin/deepeye
 
 deepeye -u
-
 
 echo """
 execute this on your .zshrc or .bashrc in order to check for updates 
