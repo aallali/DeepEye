@@ -12,7 +12,7 @@ import (
 )
 
 // @params query Query: a type Query variable containing the options of our search query
-// @return void
+// @return void : output the matches depends on the options given + results stats in the end
 func DeepEye(query Query) {
 
 	var line int = 0           // to keep track of lines scanned
@@ -49,15 +49,23 @@ func DeepEye(query Query) {
 		if query.Regex != "" {
 			// run the match with regex expression then remove duplication
 			rgxMatchResult := removeDuplicates(regexp2FindAllString(rgx, lineStr))
+			totalMatchs += len(rgxMatchResult)
 
 			// if Silent is false then run the margin generator
-			if !query.Silent {
-				results := SpotAndMargin(lineStr, rgxMatchResult, query.Range)
+			if !query.Silent &&
+				// check if lines limiter is present (> 0) or if its canceled(== -1)
+				(query.Lines > 0 || query.Lines == -1) &&
+				// check if a match is found before run the next block
+				len(rgxMatchResult) > 0 {
 
+				results := SpotAndMargin(lineStr, rgxMatchResult, query.Range)
 				// loop through all formed strings from SpotAndMargin and print them with followng template
 				for _, el := range results {
-					fmt.Printf("{l:%d}: [%s]\n", line, el)
-					totalMatchs++
+					formatOutput(line, el, query.Clean)
+				}
+				// decrease the Line counter if its strictly positive
+				if query.Lines != -1 {
+					query.Lines--
 				}
 			} else {
 				// if Silent i true, then increment the number of matched keywords
@@ -66,17 +74,25 @@ func DeepEye(query Query) {
 
 			// otherwise get the query.Keyword value
 		} else {
+			totalMatchInCurrentRow := strings.Count(lineStr, query.Keyword)
+			totalMatchs += totalMatchInCurrentRow
 
 			// if Silent false, search for the query.Keyword with SpotAndMargin
-			if !query.Silent {
+			if !query.Silent &&
+				// check if lines limiter is present (> 0) or if its canceled(== -1)
+				(query.Lines > 0 || query.Lines == -1) &&
+				// check if a match is found before run the next block
+				totalMatchInCurrentRow > 0 {
 				results := SpotAndMargin(lineStr, []string{query.Keyword}, query.Range)
 				// loop through the results, format them, and increat match counter.
 				for _, el := range results {
-					fmt.Printf("{l:%d}: [%s]\n", line, el)
-					totalMatchs++
+					formatOutput(line, el, query.Clean)
 				}
-			} else {
-				totalMatchs += strings.Count(lineStr, query.Keyword)
+
+				// decrease the Line counter if its strictly positive
+				if query.Lines != -1 {
+					query.Lines--
+				}
 			}
 		}
 		line++
@@ -86,8 +102,10 @@ func DeepEye(query Query) {
 	// calculate the time duration from line 42
 	elapsed = time.Since(startTime)
 
+	// check for any error during file scanning
 	if err := scanner.Err(); err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Println("-------------------------------")
@@ -96,5 +114,5 @@ func DeepEye(query Query) {
 	fmt.Printf("Total matches found : %d\n", totalMatchs)
 	fmt.Printf("Total lines scanned : %d\n", line)
 	fmt.Printf("File Scan took 	    : %s\n", elapsed.String())
-
+	return
 }

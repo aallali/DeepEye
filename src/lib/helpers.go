@@ -16,6 +16,18 @@ import (
 // declare the color func that will colorize my matched strings in yello background a black font
 var info = color.New(color.FgBlack, color.BgYellow).SprintFunc()
 
+// @params line int	 		 : row number where the matach is found
+// @params valMatched string : the keyword matched using the regex
+// @params clean boolean	 :
+// @return void: two type of string output to screen based on "clean" variable
+func formatOutput(line int, valMatched string, clean bool) {
+	if clean {
+		fmt.Println(valMatched)
+	} else {
+		fmt.Printf("[l:%d]: [%s]\n", line, valMatched)
+	}
+}
+
 // @params re *regexp2.Regexp : the regex compiled to search with
 // @params s string : target string to match the regex expression from
 // @return []string : list of strings matching the regex expression from the 's' string
