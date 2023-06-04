@@ -22,6 +22,12 @@ run: build
 install: build
 	@sudo rm -rf /usr/local/bin/${BINARY_NAME} && sudo cp ./${BIN_FOLDER}/${BINARY_FULLNAME} /usr/local/bin/${BINARY_NAME}
 
+test:
+	go test ./src/...
+
+coverage:
+	go test -coverpkg=./... ./...
+
 clean:
 	@go clean
 	@rm -rf ./${BIN_FOLDER}
