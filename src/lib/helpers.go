@@ -201,7 +201,9 @@ func PrintVersion() {
 // request the version.txt file in root level as raw text, and compare it to installed version
 // TODO: write auto updater.
 func CheckUpdate() {
+	updateCommand := "wget -qO- https://github.com/aallali/DeepEye/raw/main/install.sh | sudo bash"
 	fmt.Println("Checking ...")
+
 	res, err := http.Get(Infos.VCheckUrl)
 	if err != nil {
 		log.Fatal(err)
@@ -219,8 +221,8 @@ func CheckUpdate() {
 DeepEye:
 - The version installed  : %s
 - The Latest version     : %s
-Please visit the official repo to download last version : [%s]`, Infos.Version, v,
-				Infos.GitRep)
+Run the following installer script : [%s]`, Infos.Version, v,
+				updateCommand)
 			fmt.Println(msg)
 		} else {
 			fmt.Println("You are running the latest version of DeepEye:", v)
