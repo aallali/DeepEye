@@ -8,7 +8,8 @@ All notable changes to this project will be documented in this file.
 - limit nuber of lines to output `--lines`
 - clean the output to list only the matched values `--clean`
 - the update checker will output a helper message containing bash command to run.
-
+### Updated
+- `-u` updater check message contains a message with a script to run in order to download latest version
 ### Fixed
 - fixed `--range=-1` bug (all lines are returned when you chose full line option)
 
