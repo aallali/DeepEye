@@ -146,7 +146,8 @@ You are running the latest version of DeepEye: 0.0.2
 - [your name here](./CONTRIBUTING.md)
 
 ## Contributors:
-- :pencil: [Krishna Dutt Panchagnula](https://github.com/krishnaduttPanchagnula)
-
+<a href="https://github.com/aallali/deepeye/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=aallali/deepeye" />
+</a>
 ## Licence:
 MIT License
