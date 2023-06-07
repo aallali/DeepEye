@@ -1,8 +1,9 @@
 ![logo](./Ressources/DeepEye-logo.png)
 
-[![aallali - DeepEye](https://img.shields.io/static/v1?label=aallali&message=DeepEye&color=blue&logo=github)](https://github.com/aallali/DeepEye "Go to GitHub repo") | [![GitHub release](https://img.shields.io/github/release/aallali/DeepEye?include_prereleases=&sort=semver&color=blue)](https://github.com/aallali/DeepEye/releases/) |  [![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/aallali/DeepEye/blob/main/LICENSE) | [![issues - DeepEye](https://img.shields.io/github/issues/aallali/DeepEye)](https://github.com/aallali/DeepEye/issues)|[![stars - DeepEye](https://img.shields.io/github/stars/aallali/DeepEye?style=social)](https://github.com/aallali/DeepEye)|[![forks - DeepEye](https://img.shields.io/github/forks/aallali/DeepEye?style=social)](https://github.com/aallali/DeepEye) | [![Made with Go](https://img.shields.io/badge/Go-1.20.4-blue?logo=go&logoColor=white)](https://golang.org "Go to Go homepage")
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+[![aallali - DeepEye](https://img.shields.io/static/v1?label=aallali&message=DeepEye&color=blue&logo=github)](https://github.com/aallali/DeepEye "Go to GitHub repo") ![GitHub all releases](https://img.shields.io/github/downloads/aallali/deepeye/total) [![GitHub license](https://img.shields.io/github/license/aallali/deepeye)](https://github.com/aallali/deepeye/blob/main/LICENSE) [![GitHub release](https://img.shields.io/github/release/aallali/DeepEye?include_prereleases=&sort=semver&color=blue)](https://github.com/aallali/DeepEye/releases/) [![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/aallali/DeepEye/blob/main/LICENSE) [![issues - DeepEye](https://img.shields.io/github/issues/aallali/DeepEye)](https://github.com/aallali/DeepEye/issues)  [![Made with Go](https://img.shields.io/badge/Go-1.20.4-blue?logo=go&logoColor=white)](https://golang.org "Go to Go homepage")
 
+
+[![stars - DeepEye](https://img.shields.io/github/stars/aallali/DeepEye?style=social)](https://github.com/aallali/DeepEye) [![forks - DeepEye](https://img.shields.io/github/forks/aallali/DeepEye?style=social)](https://github.com/aallali/DeepEye)
 
 ## Description:
 **DeepEye** a CLI  that simply help you make search queries through files quickly using plain text or regex expressions, while having detailed output about it.
