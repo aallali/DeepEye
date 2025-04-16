@@ -29,8 +29,14 @@ func DeepEye(query Query) {
 		os.Exit(1)
 	}
 	defer f.Close() // close the file descriptor when finish the DeepEye() function
-	// https://golang.org/pkg/bufio/#Scanner.Scan
+
+	// Create a new scanner with increased buffer size
 	scanner = bufio.NewScanner(f)
+
+	// Set a larger buffer to read large lines
+	const maxScanTokenSize = 100 * 1024 * 1024 // 100 MB
+	buf := make([]byte, maxScanTokenSize)
+	scanner.Buffer(buf, maxScanTokenSize)
 
 	rgx, rgxErr := regexp2.Compile(query.Regex, 0)
 
