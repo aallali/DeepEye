@@ -1,41 +1,43 @@
 #!/bin/bash
-# Require root, since we want to create folders in a location where we maybe dont have access to
-if [ "$(whoami)" != "root" ]; then
-        echo "ERROR Install script must be run as root"
-        exit -1
-fi
 
-executableVersion="v0.0.2"
-executableName="deepeye-${executableVersion}"
-downloadUrl="https://github.com/aallali/DeepEye/releases/download/${executableVersion}/${executableName}.tar.gz"
-# TODO: wget path to executable from github repo
-# ...
-wget -O ${executableName}.tar.gz ${downloadUrl}
+# Detect OS and architecture
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(uname -m)
 
-tar -xf ${executableName}.tar.gz
+echo "DeepEye Installer"
+echo "Detecting system: $OS ($ARCH)"
 
-
-# delete old binary
-rm -rf /usr/local/bin/deepeye
-
-# # move new binary to its place
-mv ${executableName} /usr/local/bin/deepeye
-
-deepeye -u
-
-echo """
-execute this on your .zshrc or .bashrc in order to check for updates 
-
--------------------: [zsh] :-------------------
-echo \"deepeye -u\" >> ~/.zshrc
-source ~/.zshrc
------------------------------------------------
-
-or 
-
--------------------: [bash] :------------------
-echo \"deepeye -u\" >> ~/.bashrc
-source ~/.bashrc
------------------------------------------------
-
-"""
+case "$OS" in
+    linux*)
+        echo "✓ Detected Linux system"
+        if [ "$(id -u)" -ne 0 ]; then
+            echo "This installation requires root privileges. Executing with sudo..."
+            sudo bash install.sh
+        else
+            bash install.sh
+        fi
+        ;;
+    darwin*)
+        echo "✓ Detected macOS system"
+        if [ "$(id -u)" -ne 0 ]; then
+            echo "This installation requires root privileges. Executing with sudo..."
+            sudo bash install_mac.sh
+        else
+            bash install_mac.sh
+        fi
+        ;;
+    msys*|mingw*|cygwin*)
+        echo "✓ Detected Windows system"
+        echo "Windows installation requires PowerShell with administrator privileges."
+        echo ""
+        echo "Please run the following in an Administrator PowerShell window:"
+        echo "    .\\install.ps1"
+        echo ""
+        echo "Tip: Right-click PowerShell and select 'Run as Administrator'"
+        ;;
+    *)
+        echo "❌ Unsupported operating system: $OS"
+        echo "Please manually install DeepEye for your platform"
+        exit 1
+        ;;
+esac
