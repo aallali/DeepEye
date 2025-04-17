@@ -115,10 +115,9 @@ func DeepEye(query Query) {
 	}
 
 	fmt.Println("-------------------------------")
-	fmt.Printf("Target file path    : %s\n", query.FilePath)
-	fmt.Printf("Search query        : `%s`\n", ifElse(query.Keyword == "", query.Regex, query.Keyword))
-	fmt.Printf("Total matches found : %d\n", totalMatchs)
-	fmt.Printf("Total lines scanned : %d\n", line)
-	fmt.Printf("File Scan took 	    : %s\n", elapsed.String())
-	return
+	fmt.Printf("Target file    : %s\n", query.FilePath)
+	fmt.Printf("Query          : `%s`\n", ifElse(query.Keyword == "", query.Regex, query.Keyword))
+	fmt.Printf("Total matches  : %d\n", totalMatchs)
+	fmt.Printf("Total lines    : %d\n", line)
+	fmt.Printf("Scan time      : %s\n", elapsed.String())
 }
