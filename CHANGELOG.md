@@ -2,7 +2,17 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [[0.0.2](https://github.com/aallali/DeepEye/releases/tag/v0.0.2)] - 2023-06-04
+## [[0.0.3](https://github.com/aallali/DeepEye/releases/tag/0.0.3)] - 2025-04-17
+ 
+### Added
+- cross platform installer (windows, linux, mac)
+- `install_mac.sh`, `install_linux.sh`, `install_win.ps1`
+
+### Fixed
+- [#17](https://github.com/aallali/DeepEye/issues/17) `bufio.Scanner: token too long` fixed
+
+
+## [[0.0.2](https://github.com/aallali/DeepEye/releases/tag/0.0.2)] - 2023-06-04
  
 ### Added
 - limit nuber of lines to output `--lines`
@@ -13,7 +23,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - fixed `--range=-1` bug (all lines are returned when you chose full line option)
 
-## [[0.0.1](https://github.com/aallali/DeepEye/releases/tag/v0.0.1)] - 2023-05-30
+## [[0.0.1](https://github.com/aallali/DeepEye/releases/tag/0.0.1)] - 2023-05-30
   
 First release of DeepEye <3:
  
