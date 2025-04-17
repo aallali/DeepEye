@@ -15,7 +15,7 @@ EXECUTABLE_VERSION="${VERSION}"
 EXECUTABLE_NAME="deepeye-${EXECUTABLE_VERSION}"
 INSTALL_DIR="/usr/local/bin"
 BINARY_NAME="deepeye"
-DOWNLOAD_URL="https://github.com/aallali/DeepEye/releases/download/${EXECUTABLE_VERSION}/${EXECUTABLE_NAME}-mac.tar.gz"
+DOWNLOAD_URL="https://github.com/aallali/DeepEye/releases/download/${EXECUTABLE_VERSION}/${EXECUTABLE_NAME}-linux-amd64.tar.gz"
 
 echo "Latest version: ${EXECUTABLE_VERSION}"
 echo "Download URL: ${DOWNLOAD_URL}"
