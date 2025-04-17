@@ -219,27 +219,26 @@ func CheckUpdate() {
 	res, err := http.Get(Infos.VCheckUrl)
 	if err != nil {
 		log.Fatal(err)
-
 	} else {
 		responseData, err := ioutil.ReadAll(res.Body)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		resStrList := strings.Split(string(responseData), "\n")
-		v := resStrList[0]
-		if v != Infos.Version {
+		// Simply compare with the version from the VERSION file
+		latestVersion := strings.TrimSpace(string(responseData))
+		currentVersion := Infos.Version // Add v prefix if needed
+
+		if latestVersion != currentVersion {
 			msg := fmt.Sprintf(`
 DeepEye:
 - The version installed  : %s
 - The Latest version     : %s
-Run the following installer script : [%s]`, Infos.Version, v,
-				updateCommand)
+Run the following installer script : [%s]`, currentVersion, latestVersion, updateCommand)
 			fmt.Println(msg)
 		} else {
-			fmt.Println("You are running the latest version of DeepEye:", v)
+			fmt.Println("You are running the latest version of DeepEye:", latestVersion)
 		}
 		os.Exit(0)
 	}
-
 }
